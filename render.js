@@ -32,9 +32,12 @@ var render = function () {
   // Score
   // ctx.fillText("Goblins caught: " + monstersCaught, 32, 32);
 
-  // Hero (debug)
-  // ctx.fillText("hero: " + JSON.stringify(hero), 32, 48);
+  // Ball (debug)
+  ctx.fillText("ball: " + JSON.stringify(ball), 32, 48);
 
-  // Monster (debug)
-  // ctx.fillText("monster: " + JSON.stringify(monster), 32, 64);
+  // P1 (debug)
+  ctx.fillText("p1: " + JSON.stringify(p1), 32, 64);
+
+  // P2 (debug)
+  ctx.fillText("p2: " + JSON.stringify(p2), 32, 80);
 };

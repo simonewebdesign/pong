@@ -4,21 +4,22 @@
 var ball = {
   size: 10,
   x: (canvas.width - 10) / 2,
-  y: (canvas.height - 10) / 2
+  y: (canvas.height - 10) / 2,
+  direction: '' // left or right
 }
 
 var p1 = {
   width: 10,
   height: 80,
   x: 20,
-  y: (canvas.height - this.height) / 2
+  y: (canvas.height - 80) / 2
 }
 
 var p2 = {
   width: 10,
   height: 80,
-  x: canvas.width - this.width - 20,
-  y: (canvas.height - this.height) / 2
+  x: canvas.width - 10 - 20,
+  y: (canvas.height - 80) / 2
 }
 
 // FIRST RENDERING - the next ones will happen in render()
@@ -29,7 +30,7 @@ ctx.fillRect(p2.x, p2.y, p2.width, p2.height);
 
 // ball
 ctx.fillStyle = "#FFF";
-ctx.fillRect(ball.x, ball.y, ball.size, ball.size);
+ctx.fillRect(ball.x, ball.y, 10, 10);
 
 // ctx.fillRect(20, canvas.height, 10, 80);
 // var x = this.vector2d.x
