@@ -16,8 +16,11 @@ var render = function () {
   // }
 
   ctx.fillStyle = "#0F0";
-  ctx.fillRect(20, (canvas.height - 80) / 2, 10, 80);
-  ctx.fillRect(canvas.width - 20 - 10, (canvas.height - 80) / 2, 10, 80);
+  // P1
+  ctx.fillRect(p1.x, p1.y, p1.width, p1.height);
+
+  // P2
+  ctx.fillRect(p2.x, p2.y, p2.width, p2.height);
 
   // ball
   ctx.fillStyle = "#FFF";
@@ -29,11 +32,14 @@ var render = function () {
   ctx.textAlign = "left";
   ctx.textBaseline = "top";
 
-  // Score
-  // ctx.fillText("Goblins caught: " + monstersCaught, 32, 32);
+  // P1 Score
+  ctx.fillText(p1.score, 32, 32);
+
+  // P2 Score
+  ctx.fillText(p2.score, canvas.width - 32 - 10, 32);
 
   // Ball (debug)
-  ctx.fillText("ball: " + JSON.stringify(ball), 32, 48);
+  ctx.fillText("ball: " + JSON.stringify(ball), 32, 96);
 
   // P1 (debug)
   ctx.fillText("p1: " + JSON.stringify(p1), 32, 64);

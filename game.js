@@ -5,21 +5,26 @@ var ball = {
   size: 10,
   x: (canvas.width - 10) / 2,
   y: (canvas.height - 10) / 2,
-  direction: '' // left or right
+  direction: '', // left or right
+  speed: 200
 }
 
 var p1 = {
   width: 10,
   height: 80,
   x: 20,
-  y: (canvas.height - 80) / 2
+  y: (canvas.height - 80) / 2,
+  score: 0,
+  speed: 300
 }
 
 var p2 = {
   width: 10,
   height: 80,
   x: canvas.width - 10 - 20,
-  y: (canvas.height - 80) / 2
+  y: (canvas.height - 80) / 2,
+  score: 0,
+  speed: 300
 }
 
 // FIRST RENDERING - the next ones will happen in render()
