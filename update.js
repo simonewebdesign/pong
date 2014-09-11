@@ -1,7 +1,6 @@
 // Update game objects
 var update = function (modifier) {
   if (32 in keysDown) { // Start the game with the spacebar
-    // console.log(1);
     ball.direction = 'right';
   }
   if (87 in keysDown) { // P1 holding up (key: w)
@@ -16,24 +15,6 @@ var update = function (modifier) {
   if (40 in keysDown) { // Player holding down
     p2.y += p2.speed * modifier;
   }
-  // if (37 in keysDown) { // Player holding left
-  //   p2.x -= p2.speed * modifier;
-  // }
-  // if (39 in keysDown) { // Player holding right
-  //   p2.x += p2.speed * modifier;
-  // }
-
-  // Are they touching?
-  // if (
-  //   ball.x <= (p2.x + p2.width)
-  //   && p2.x <= (ball.x + ball.size)
-  //   && ball.y <= (p2.y + p2.height)
-  //   && p2.y <= (ball.y + ball.size)
-  // ) {
-  //   // TODO increase score
-  //   console.log(2)
-  //   reset();
-  // }
 
   // Ball is out of the left boundary
   if (

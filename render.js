@@ -3,18 +3,6 @@ var render = function () {
   // clear the canvas
   ctx.clear();
 
-  // if (bgReady) {
-  //   ctx.drawImage(bgImage, 0, 0);
-  // }
-
-  // if (heroReady) {
-  //   ctx.drawImage(heroImage, hero.x, hero.y);
-  // }
-
-  // if (monsterReady) {
-  //   ctx.drawImage(monsterImage, monster.x, monster.y);
-  // }
-
   ctx.fillStyle = "#0F0";
   // P1
   ctx.fillRect(p1.x, p1.y, p1.width, p1.height);
