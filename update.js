@@ -5,15 +5,29 @@ var update = function (modifier) {
   }
   if (87 in keysDown) { // P1 holding up (key: w)
     p1.y -= p1.speed * modifier;
+    if (p1.y <= 0) {
+      p1.y = 0;
+    }
   }
   if (83 in keysDown) { // P1 holding down (key: s)
     p1.y += p1.speed * modifier;
+    var h = canvas.height - p1.height;
+    if (p1.y >= h) {
+      p1.y = h;
+    }
   }
   if (38 in keysDown) { // Player holding up
     p2.y -= p2.speed * modifier;
+    if (p2.y <= 0) {
+      p2.y = 0;
+    }
   }
   if (40 in keysDown) { // Player holding down
     p2.y += p2.speed * modifier;
+    var h = canvas.height - p2.height;
+    if (p2.y >= h) {
+      p2.y = h;
+    }
   }
 
   // Ball is out of the left boundary
