@@ -65,6 +65,9 @@ var update = function (modifier) {
     && p1.y <= (ball.y + ball.size)
   ) {
     ball.speedX = Math.abs(ball.speedX);
+
+    // Give the ball a bit of randomness by increasing/decreasing its speed on the Y axis only
+    ball.speedY = randomize();
   }
 
   // Ball is colliding with P2
@@ -75,6 +78,9 @@ var update = function (modifier) {
     && p2.y <= (ball.y + ball.size)
   ) {
     ball.speedX = Math.abs(ball.speedX) * -1; // inverted
+
+    // Give the ball a bit of randomness by increasing/decreasing its speed on the Y axis only
+    ball.speedY = randomize();
   }
 
   // Ball is colliding with the top
@@ -91,9 +97,12 @@ var update = function (modifier) {
     // Ball movement
     ball.x += ball.speedX * modifier;
     ball.y += ball.speedY * modifier;
-
-    // Increase difficulty
-    ball.speedX > 0 ? ball.speedX++ : ball.speedX--;
-    ball.speedY > 0 ? ball.speedY++ : ball.speedY--;
   }
 };
+
+function randomize() {
+  // Random float between 0 and 599.9
+  var _rand = Math.random() * 600;
+  // positive or negative?
+  return Math.random() > 0.5 ? _rand : _rand * -1;
+}

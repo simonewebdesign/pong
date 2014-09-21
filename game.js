@@ -1,10 +1,6 @@
 // Game objects
 var ball = {
-  size: 10,
-  x: (canvas.width - 10) / 2,
-  y: (canvas.height - 10) / 2,
-  speedX: 1,
-  speedY: 1
+  size: 10
 }
 
 var p1 = {

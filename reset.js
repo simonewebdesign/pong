@@ -6,6 +6,7 @@ var reset = function () {
   ball.x = (canvas.width - ball.size) / 2;
   ball.y = (canvas.height - ball.size) / 2;
 
-  ball.speedX = 1;
-  ball.speedY = 1;
-};
+  // randomly start from left or right
+  ball.speedX = Math.random() > 0.5 ? 600 : -600;
+  ball.speedY = 0;
+}
