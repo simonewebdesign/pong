@@ -22,6 +22,18 @@ You can play a demo [here](demo).
 
 If you want to play it locally, fork or clone the repository as usual. It doesn't need any server to run. Just open index.html.
 
+### Controls
+
+Start the game with spacebar.
+
+#### Player 1
+  - up: arrow up
+  - down: arrow down
+
+#### Player 2
+  - up: w
+  - down: s
+
 ## License
 
 Licensed under the WTFPL license.
