@@ -11,8 +11,8 @@ var render = function () {
   ctx.fillRect(p2.x, p2.y, p2.width, p2.height);
 
   // ball
-  ctx.fillStyle = "#FFF";
-  ctx.fillRect(ball.x, ball.y, 10, 10);
+  ctx.fillStyle = "#DDD";
+  ctx.fillRect(ball.x, ball.y, ball.size, ball.size);
 
   // Text options
   ctx.fillStyle = "rgb(250, 250, 250)";
@@ -26,12 +26,20 @@ var render = function () {
   // P2 Score
   ctx.fillText(p2.score, canvas.width - 32 - 10, 32);
 
+  // Text options
+  ctx.font = "36px Helvetica";
+
+  // Initial text
+  if (!isGameStarted) {
+    ctx.fillText("Press spacebar to start", 200, canvas.height / 2);
+  }
+
   // Ball (debug)
-  ctx.fillText("ball: " + JSON.stringify(ball), 32, 96);
+  // ctx.fillText("ball: " + JSON.stringify(ball), 32, 96);
 
-  // P1 (debug)
-  ctx.fillText("p1: " + JSON.stringify(p1), 32, 64);
+  // // P1 (debug)
+  // ctx.fillText("p1: " + JSON.stringify(p1), 32, 64);
 
-  // P2 (debug)
-  ctx.fillText("p2: " + JSON.stringify(p2), 32, 80);
+  // // P2 (debug)
+  // ctx.fillText("p2: " + JSON.stringify(p2), 32, 80);
 };

@@ -1,10 +1,11 @@
-// Reset the game when the player catches a monster
+// Reset the game
 var reset = function () {
 
-  ball.direction = '';
-  ball.x = (canvas.width - ball.size) / 2;
-  ball.y = (canvas.width - ball.size) / 2;
+  isGameStarted = false;
 
-  // p1.y = (canvas.height - 80) / 2;
-  // p2.y = (canvas.height - 80) / 2;
+  ball.x = (canvas.width - ball.size) / 2;
+  ball.y = (canvas.height - ball.size) / 2;
+
+  ball.speedX = 1;
+  ball.speedY = 1;
 };

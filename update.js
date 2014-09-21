@@ -1,32 +1,41 @@
 // Update game objects
 var update = function (modifier) {
+
   if (32 in keysDown) { // Start the game with the spacebar
-    ball.direction = 'right';
+    isGameStarted = true;
   }
+
   if (87 in keysDown) { // P1 holding up (key: w)
     p1.y -= p1.speed * modifier;
+
     if (p1.y <= 0) {
       p1.y = 0;
     }
   }
+
   if (83 in keysDown) { // P1 holding down (key: s)
     p1.y += p1.speed * modifier;
-    var h = canvas.height - p1.height;
-    if (p1.y >= h) {
-      p1.y = h;
+
+    var limit = canvas.height - p1.height;
+    if (p1.y >= limit) {
+      p1.y = limit;
     }
   }
-  if (38 in keysDown) { // Player holding up
+
+  if (38 in keysDown) { // P2 holding up
     p2.y -= p2.speed * modifier;
+
     if (p2.y <= 0) {
       p2.y = 0;
     }
   }
-  if (40 in keysDown) { // Player holding down
+
+  if (40 in keysDown) { // P2 holding down
     p2.y += p2.speed * modifier;
-    var h = canvas.height - p2.height;
-    if (p2.y >= h) {
-      p2.y = h;
+
+    var limit = canvas.height - p2.height;
+    if (p2.y >= limit) {
+      p2.y = limit;
     }
   }
 
@@ -55,7 +64,7 @@ var update = function (modifier) {
     && ball.y <= (p1.y + p1.height)
     && p1.y <= (ball.y + ball.size)
   ) {
-    ball.direction = "right";
+    ball.speedX = Math.abs(ball.speedX);
   }
 
   // Ball is colliding with P2
@@ -65,14 +74,26 @@ var update = function (modifier) {
     && ball.y <= (p2.y + p2.height)
     && p2.y <= (ball.y + ball.size)
   ) {
-    ball.direction = "left";
+    ball.speedX = Math.abs(ball.speedX) * -1; // inverted
   }
 
-  if (ball.direction == "right") {
-    ball.x += ball.speed * modifier;
+  // Ball is colliding with the top
+  if (ball.y <= 0) {
+    ball.speedY = Math.abs(ball.speedY);
   }
 
-  if (ball.direction == "left") {
-    ball.x -= ball.speed * modifier;
+  // Ball is colliding with the bottom
+  if (ball.y + ball.size >= canvas.height) {
+    ball.speedY = Math.abs(ball.speedY) * -1; // inverted
+  }
+
+  if (isGameStarted) {
+    // Ball movement
+    ball.x += ball.speedX * modifier;
+    ball.y += ball.speedY * modifier;
+
+    // Increase difficulty
+    ball.speedX > 0 ? ball.speedX++ : ball.speedX--;
+    ball.speedY > 0 ? ball.speedY++ : ball.speedY--;
   }
 };
