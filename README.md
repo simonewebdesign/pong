@@ -18,7 +18,9 @@ Due to its lightness, there are some missing key features, e.g.:
 
 ## How to play
 
+<!--
 You can play a demo [here](demo).
+-->
 
 If you want to play it locally, fork or clone the repository as usual. It doesn't need any server to run. Just open index.html.
 
