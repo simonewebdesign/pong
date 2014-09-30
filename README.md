@@ -1,6 +1,6 @@
 # Pong
 
-![screenshot](screenshot)
+![screenshot]
 
 This is a very basic canvas implementation of Atari's popular game, first released in 1972.
 
