@@ -1,5 +1,7 @@
 # Pong
 
+![screenshot](screenshot)
+
 This is a very basic canvas implementation of Atari's popular game, first released in 1972.
 
 Very lightweight, the implementation is around 200 lines of code.
@@ -46,3 +48,4 @@ I would like to thank Matt Hackett for his tutorial on [how to make a simple HTM
 
 [demo]: http://www.simonewebdesign.it/games/pong
 [tutorial]: http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/
+[screenshot]: https://raw.githubusercontent.com/dudeOMG/pong/master/pong.png
