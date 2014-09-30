@@ -12,7 +12,7 @@ var render = function () {
 
   // ball
   ctx.fillStyle = "#DDD";
-  ctx.fillRect(ball.x, ball.y, ball.size, ball.size);
+  ctx.fillRect(ball.position.x, ball.position.y, ball.size, ball.size);
 
   // Text options
   ctx.fillStyle = "rgb(250, 250, 250)";

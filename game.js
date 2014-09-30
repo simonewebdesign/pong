@@ -1,6 +1,16 @@
 // Game objects
 var ball = {
-  size: 10
+  size: 10,
+  /*
+  * R = 2*(V dot N)*N - V
+  * V: velocity vector
+  * N: a normalized vector of the plane surface (e.g. paddle or wall)
+  */
+  deflect: function (N) {
+    var dot = this.velocity.dot(N);
+    var v1 = N.multiplyScalar(2 * dot);
+    this.velocity = v1.subSelf(this.velocity);
+  }
 }
 
 var p1 = {

@@ -3,10 +3,11 @@ var reset = function () {
 
   isGameStarted = false;
 
-  ball.x = (canvas.width - ball.size) / 2;
-  ball.y = (canvas.height - ball.size) / 2;
+  var xPosition = (canvas.width - ball.size) / 2,
+      yPosition = (canvas.height - ball.size) / 2,
+      xVelocity = Math.random() > 0.5 ? 600 : -600, // randomly start from left or right
+      yVelocity = 0;
 
-  // randomly start from left or right
-  ball.speedX = Math.random() > 0.5 ? 600 : -600;
-  ball.speedY = 0;
+  ball.position = new Vector2(xPosition, yPosition);
+  ball.velocity = new Vector2(xVelocity, yVelocity);
 }

@@ -39,70 +39,51 @@ var update = function (modifier) {
     }
   }
 
-  // Ball is out of the left boundary
-  if (
-    ball.x <= 0
-  ) {
-    // player 2 wins
+  // Ball is out of the left boundary - player 2 wins!
+  if (ball.position.x <= 0) {
     p2.score++;
     reset();
   }
 
-  // Ball is out of the right boundary
-  if (
-    ball.x >= canvas.width - ball.size
-  ) {
-    // player 1 wins
+  // Ball is out of the right boundary - player 1 wins!
+  if (ball.position.x >= canvas.width - ball.size) {
     p1.score++;
     reset();
   }
 
   // Ball is colliding with P1
   if (
-    ball.x <= (p1.x + p1.width)
-    && p1.x <= (ball.x + ball.size)
-    && ball.y <= (p1.y + p1.height)
-    && p1.y <= (ball.y + ball.size)
+    ball.position.x <= (p1.x + p1.width)
+    && p1.x <= (ball.position.x + ball.size)
+    && ball.position.y <= (p1.y + p1.height)
+    && p1.y <= (ball.position.y + ball.size)
   ) {
-    ball.speedX = Math.abs(ball.speedX);
-
-    // Give the ball a bit of randomness by increasing/decreasing its speed on the Y axis only
-    ball.speedY = randomize();
+    ball.deflect( new Vector2(0, 1) );
   }
 
   // Ball is colliding with P2
   if (
-    ball.x <= (p2.x + p2.width)
-    && p2.x <= (ball.x + ball.size)
-    && ball.y <= (p2.y + p2.height)
-    && p2.y <= (ball.y + ball.size)
+    ball.position.x <= (p2.x + p2.width)
+    && p2.x <= (ball.position.x + ball.size)
+    && ball.position.y <= (p2.y + p2.height)
+    && p2.y <= (ball.position.y + ball.size)
   ) {
-    ball.speedX = Math.abs(ball.speedX) * -1; // inverted
-
-    // Give the ball a bit of randomness by increasing/decreasing its speed on the Y axis only
-    ball.speedY = randomize();
+    ball.deflect( new Vector2(0, 1) );
   }
 
   // Ball is colliding with the top
-  if (ball.y <= 0) {
-    ball.speedY = Math.abs(ball.speedY);
+  if (ball.position.y <= 0) {
+    ball.deflect( new Vector2(1, 0) );
   }
 
   // Ball is colliding with the bottom
-  if (ball.y + ball.size >= canvas.height) {
-    ball.speedY = Math.abs(ball.speedY) * -1; // inverted
+  if (ball.position.y + ball.size >= canvas.height) {
+    ball.deflect( new Vector2(1, 0) );
   }
 
   if (isGameStarted) {
     // Ball movement
-    ball.x += ball.speedX * modifier;
-    ball.y += ball.speedY * modifier;
+    ball.position.x += ball.velocity.x * modifier;
+    ball.position.y += ball.velocity.y * modifier;
   }
 };
-
-function randomize() {
-  // Random float between 0 and 599.9
-  var _rand = Math.random() * 600;
-  // positive or negative?
-  return Math.random() > 0.5 ? _rand : _rand * -1;
-}
