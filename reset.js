@@ -8,18 +8,14 @@ var reset = function () {
       xVelocity = Math.random() > 0.5 ? 600 : -600, // randomly start from left or right
       yVelocity = 0;
 
-  var paddleSpeed = 600,
-      paddleWidth = 10,
-      paddleHeight = 100;
-
   ball.position = new Vector2(xPosition, yPosition);
   ball.velocity = new Vector2(xVelocity, yVelocity);
 
-  p1.speed = paddleSpeed;
-  p1.width = paddleWidth;
-  p1.height = paddleHeight;
+  var xPositionP1 = 20,
+      yPositionP1 = canvas.height / 2 - p1.height / 2,
+      xPositionP2 = canvas.width - p2.width - 20,
+      yPositionP2 = canvas.height / 2 - p2.height / 2;
 
-  p2.speed = paddleSpeed;
-  p2.width = paddleWidth;
-  p2.height = paddleHeight;
+  p1.pos = new Vector2(xPositionP1, yPositionP1);
+  p2.pos = new Vector2(xPositionP2, yPositionP2);
 }

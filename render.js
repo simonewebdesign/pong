@@ -5,10 +5,10 @@ var render = function () {
 
   ctx.fillStyle = "#0F0";
   // P1
-  ctx.fillRect(p1.x, p1.y, p1.width, p1.height);
+  ctx.fillRect(p1.pos.x, p1.pos.y, p1.width, p1.height);
 
   // P2
-  ctx.fillRect(p2.x, p2.y, p2.width, p2.height);
+  ctx.fillRect(p2.pos.x, p2.pos.y, p2.width, p2.height);
 
   // ball
   ctx.fillStyle = "#DDD";

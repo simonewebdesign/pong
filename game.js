@@ -13,14 +13,14 @@ var ball = {
   }
 }
 
-var p1 = {
-  x: 20,
-  y: (canvas.height - 100) / 2,
-  score: 0
+var Paddle = function () {
+  return {
+    score: 0,
+    speed: 600,
+    width: 10,
+    height: 100
+  }
 }
 
-var p2 = {
-  x: canvas.width - 10 - 20,
-  y: (canvas.height - 100) / 2,
-  score: 0
-}
+var p1 = new Paddle(),
+    p2 = new Paddle();
