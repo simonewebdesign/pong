@@ -18,7 +18,29 @@ var Paddle = function () {
     score: 0,
     speed: 600,
     width: 10,
-    height: 100
+    height: 100,
+    directingVector: function () {
+      // These are points A and B expressed as vector.
+      var a = this.pos,
+          b = a.clone();
+
+      b.y += this.height;
+
+      // The directing vector is calculated by a simple subtraction.
+      var v = b.subSelf(a);
+
+      // The normal vector is given by flipping the directing vector, that is to
+      // reverse the components and make one component negative.
+      // nl = normal, flipped to the left
+      // nr = normal, flipped to the right
+      v.set(v.x * -1, v.y);
+      // v.set(v.x, v.y * -1);
+
+      // The unit vector of the normal vector is given by dividing each component
+      // by the length of the vector.
+      v.normalize();
+      return v;
+    }
   }
 }
 

@@ -58,7 +58,7 @@ var update = function (modifier) {
     && ball.position.y <= (p1.pos.y + p1.height)
     && p1.pos.y <= (ball.position.y + ball.size)
   ) {
-    ball.deflect( new Vector2(0, 1) );
+    ball.deflect( p1.directingVector() ); // should be new Vector2(0, 1)
   }
 
   // Ball is colliding with P2
@@ -68,7 +68,7 @@ var update = function (modifier) {
     && ball.position.y <= (p2.pos.y + p2.height)
     && p2.pos.y <= (ball.position.y + ball.size)
   ) {
-    ball.deflect( new Vector2(0, 1) );
+    ball.deflect( p2.directingVector() ); // should be new Vector2(0, 1)
   }
 
   // Ball is colliding with the top
