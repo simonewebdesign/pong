@@ -1,4 +1,4 @@
-// Game objects
+  // Game objects
 var ball = {
   size: 10,
   /*
@@ -19,6 +19,7 @@ var Paddle = function () {
     speed: 600,
     width: 10,
     height: 100,
+
     directingVector: function () {
       // These are points A and B expressed as vector.
       var a = this.pos,
@@ -40,6 +41,22 @@ var Paddle = function () {
       // by the length of the vector.
       v.normalize();
       return v;
+    },
+
+    top: function () {
+      return this.pos;
+    },
+
+    bottom: function () {
+      var bottom = this.pos.clone();
+      bottom.addSelf( new Vector2(0, this.height) );
+      return bottom;
+    },
+
+    center: function () {
+      var center = this.pos.clone();
+      center.addSelf( new Vector2(0, this.height / 2) );
+      return center;
     }
   }
 }
