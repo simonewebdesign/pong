@@ -10,6 +10,24 @@ var ball = {
     var dot = this.velocity.dot(N);
     var v1 = N.multiplyScalar(2 * dot);
     this.velocity = v1.subSelf(this.velocity);
+  },
+
+  center: function () {
+    var center = this.position.clone();
+    center.addSelf( new Vector2(this.size / 2, this.size / 2) );
+    return center;
+  },
+
+  centerLeft: function() {
+    var centerLeft = this.position.clone();
+    centerLeft.addSelf( new Vector2(0, this.size / 2) );
+    return centerLeft;
+  },
+
+  centerRight: function() {
+    var centerRight = this.position.clone();
+    centerRight.addSelf( new Vector2(this.size, this.size / 2) );
+    return centerRight;
   }
 }
 
@@ -55,8 +73,20 @@ var Paddle = function () {
 
     center: function () {
       var center = this.pos.clone();
-      center.addSelf( new Vector2(0, this.height / 2) );
+      center.addSelf( new Vector2(this.width / 2, this.height / 2) );
       return center;
+    },
+
+    centerLeft: function () {
+      var centerLeft = this.pos.clone();
+      centerLeft.addSelf( new Vector2(0, this.height / 2) );
+      return centerLeft;
+    },
+
+    centerRight: function () {
+      var centerLeft = this.pos.clone();
+      centerLeft.addSelf( new Vector2(this.width, this.height / 2) );
+      return centerLeft;
     }
   }
 }
