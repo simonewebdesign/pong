@@ -160,6 +160,26 @@ Vector2.prototype = {
 
         return ( ( v.x === this.x ) && ( v.y === this.y ) );
 
+    },
+
+
+    // Rotates the vector by the specified angle.
+    // Equivalent to multiplying by the 2×2 rotation matrix.
+    rotate: function( angle ) {
+
+        var px = this.x * cos(angle) – this.y * sin(angle);
+        var py = this.x * sin(angle) + this.y * cos(angle);
+
+        this.set( px, py );
+
+        return this;
+
+    },
+
+    angle: function () {
+
+        return Math.atan2( this.x, this.y );
+
     }
 
 };
