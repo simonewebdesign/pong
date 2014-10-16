@@ -167,7 +167,7 @@ Vector2.prototype = {
     // Equivalent to multiplying by the 2×2 rotation matrix.
     rotate: function( angle ) {
 
-        var px = this.x * cos(angle) – this.y * sin(angle);
+        var px = this.x * cos(angle) - this.y * sin(angle);
         var py = this.x * sin(angle) + this.y * cos(angle);
 
         this.set( px, py );
