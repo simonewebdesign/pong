@@ -163,12 +163,12 @@ Vector2.prototype = {
     },
 
 
-    // Rotates the vector by the specified angle.
+    // Rotates the vector around the origin by the specified angle.
     // Equivalent to multiplying by the 2×2 rotation matrix.
     rotate: function( angle ) {
 
-        var px = this.x * cos(angle) - this.y * sin(angle);
-        var py = this.x * sin(angle) + this.y * cos(angle);
+        var px = this.x * Math.cos(angle) - this.y * Math.sin(angle);
+        var py = this.x * Math.sin(angle) + this.y * Math.cos(angle);
 
         this.set( px, py );
 
@@ -176,10 +176,29 @@ Vector2.prototype = {
 
     },
 
+    // rotateAroundPivot: function( pivot, angle ) {
+
+    //     return this.subSelf(pivot).rotate(angle).addSelf(pivot);
+
+    // },
+
+    // Returns the angle that the vector points to.
     angle: function () {
 
         return Math.atan2( this.x, this.y );
 
-    }
+    },
+
+    flipLeft: function () {
+
+        return this.set(this.x * -1, this.y);
+
+    },
+
+    flipRight: function () {
+
+        return this.set(this.x, this.y * -1)
+
+    },
 
 };

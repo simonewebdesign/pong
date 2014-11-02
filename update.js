@@ -11,6 +11,8 @@ var update = function (modifier) {
     if (p1.pos.y <= 0) {
       p1.pos.y = 0;
     }
+
+    p1.updatePivot();
   }
 
   if (83 in keysDown) { // P1 holding down (key: s)
@@ -20,6 +22,8 @@ var update = function (modifier) {
     if (p1.pos.y >= limit) {
       p1.pos.y = limit;
     }
+
+    p1.updatePivot();
   }
 
   if (38 in keysDown) { // P2 holding up
@@ -28,6 +32,8 @@ var update = function (modifier) {
     if (p2.pos.y <= 0) {
       p2.pos.y = 0;
     }
+
+    p2.updatePivot();
   }
 
   if (40 in keysDown) { // P2 holding down
@@ -37,6 +43,8 @@ var update = function (modifier) {
     if (p2.pos.y >= limit) {
       p2.pos.y = limit;
     }
+
+    p2.updatePivot();
   }
 
   // Ball is out of the left boundary - player 2 wins!
@@ -58,7 +66,8 @@ var update = function (modifier) {
     && ball.position.y <= (p1.pos.y + p1.height)
     && p1.pos.y <= (ball.position.y + ball.size)
   ) {
-    ball.deflect( p1.directingVector() ); // should be new Vector2(0, 1)
+    var normal = new Vector2(0, 1);
+    ball.deflect( normal );
   }
 
   // Ball is colliding with P2
@@ -68,7 +77,26 @@ var update = function (modifier) {
     && ball.position.y <= (p2.pos.y + p2.height)
     && p2.pos.y <= (ball.position.y + ball.size)
   ) {
-    ball.deflect( p2.directingVector() ); // should be new Vector2(0, 1)
+
+    // var a = ball.centerRight(),
+    //     b = p2.centerLeft(),
+    //// you could use distanceTo() here.
+    //     distanceBetweenTwoPoints = b.subSelf(a).length(), // will be used as angle
+    //     pivot = p2.bottom();
+
+    // // FIXME: the actual logic error is inside directingVector() function.
+    // // maybe the correct logic is:
+    // if (a.y > b.y) {
+    //   // collided after the center (on the left of the paddle)
+
+    // } else {
+    //   // collided before the center (on the right of the paddle)
+    // }
+
+    var hitFactor = 0.2;
+    ball.deflect( new Vector2(hitFactor, 1) );
+    // ball.deflect( p2.calculateDirectingVector(angle) ); // the new one
+    // ball.deflect( p2.directingVector() ); // should be new Vector2(0, 1)
   }
 
   // Ball is colliding with the top

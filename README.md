@@ -2,9 +2,10 @@
 
 ![screenshot]
 
-This is a very basic canvas implementation of Atari's popular game, first released in 1972.
+This is a basic canvas implementation of Atari's popular game, first released in 1972.
 
 Very lightweight, the implementation is around 200 lines of code.
+
 
 ## Features
 
@@ -17,6 +18,7 @@ Due to its lightness, there are some missing key features, e.g.:
 - Sound
 - AI
 - Proper ball reflection with vectors and trigonometry
+
 
 ## How to play
 
@@ -37,6 +39,12 @@ Start the game with spacebar.
 #### Player 2
   - up: w
   - down: s
+
+
+### Implementation details
+
+The ball is obviously perfectly elastic, which means all of the kinetic energy in a collision will get transferred.
+
 
 ## License
 
