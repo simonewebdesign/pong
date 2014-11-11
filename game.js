@@ -45,9 +45,35 @@ var Paddle = function () {
     pos: new Vector2(),
     pivot: new Vector2(),
     direction: new Vector2(),
+    oldPos: new Vector2(), // For calculating the offset. Temporary... maybe.
+
+    // This is here as convenience for using it in the render function
+    angle: 0,
 
     updatePivot: function () {
       this.pivot.set(this.width / 2, this.height / 2).addSelf(this.pos);
+    },
+
+    // rotateAroundPivot: function () {
+    //   var pivot = this.pivot.clone().normalize();
+    //   this.direction.subSelf(pivot).rotate(this.angle).addSelf(pivot);
+    // },
+
+    // translatePoints: function () {
+    //   for (var i = 0; i < this.points.length; i++) {
+    //     this.points[i].multiplyScalar(this.pivot);
+    //   }
+    // },
+
+    // rotatePivot: function () {
+    //   console.log("The Paddle's rotate function has been called with an implicit angle of ", this.angle);
+    //   this.rotate()
+    // }
+
+    rotatePoints: function () {
+      for (var i = 0; i < this.points.length; i++) {
+        this.points[i].multiplyScalar(this.pivot);
+      }
     },
     // This can't be a function, because you need to manipulate it, e.g. normalize and rotate
     // pivot: function () {

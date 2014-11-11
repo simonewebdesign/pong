@@ -197,7 +197,7 @@ Vector2.prototype = {
 
     flipRight: function () {
 
-        return this.set(this.x, this.y * -1)
+        return this.set(this.x, this.y * -1);
 
     },
 

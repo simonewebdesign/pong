@@ -40,4 +40,6 @@ var reset = function () {
   p1.updatePivot();
   p2.updatePivot();
 
+  p1.direction.set(0, 1);
+  p2.direction.set(-0, 1);
 }
