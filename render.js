@@ -28,7 +28,7 @@ var render = function () {
 
   // P2
   // rendering method #1
-  ctx.fillRect(p2.pos.x, p2.pos.y, p2.width, p2.height);
+  // ctx.fillRect(p2.pos.x, p2.pos.y, p2.width, p2.height);
 
   // TODO: I think I need to draw the paddles with lineTo instead of fillRect.
   // Investigate. This is obviously just for showing a curved wall and has nothing
@@ -46,7 +46,18 @@ var render = function () {
   // translating back to the origin
   ctx.translate( -1 * p2.pivot.x, -1 * p2.pivot.y );
 
-  // you could draw P2 here
+  // actually drawing the shape
+  ctx.beginPath();
+  ctx.moveTo(p2.points[3].x, p2.points[3].y);
+  ctx.lineTo(p2.points[0].x, p2.points[0].y);
+  ctx.moveTo(p2.points[0].x, p2.points[0].y);
+  ctx.lineTo(p2.points[1].x, p2.points[1].y);
+  ctx.moveTo(p2.points[1].x, p2.points[1].y);
+  ctx.lineTo(p2.points[2].x, p2.points[2].y);
+  ctx.moveTo(p2.points[2].x, p2.points[2].y);
+  ctx.lineTo(p2.points[3].x, p2.points[3].y);
+  ctx.stroke();
+  ctx.closePath();
 
   ctx.restore();
 

@@ -15,12 +15,12 @@ var update = function (modifier) {
     var movementYaxis = p1.speed * modifier;
     p1.pos.y -= movementYaxis;
 
+    p1.updatePivot();
+    p1.updatePoints(movementYaxis * -1);
+
     if (p1.pos.y <= 0) {
       p1.pos.y = 0;
     }
-
-    p1.updatePivot();
-    p1.updatePoints(movementYaxis * -1);
   }
 
   if (83 in keysDown) { // P1 holding down (key: s)
@@ -29,34 +29,42 @@ var update = function (modifier) {
     var movementYaxis = p1.speed * modifier;
     p1.pos.y += movementYaxis;
 
+    p1.updatePivot();
+    p1.updatePoints(movementYaxis);
+
     var limit = canvas.height - p1.height;
     if (p1.pos.y >= limit) {
       p1.pos.y = limit;
     }
-
-    p1.updatePivot();
-    p1.updatePoints(movementYaxis);
   }
 
   if (38 in keysDown) { // P2 holding up
-    p2.pos.y -= p2.speed * modifier;
+
+    // Update position
+    var movementYaxis = p2.speed * modifier;
+    p2.pos.y -= movementYaxis;
+
+    p2.updatePivot();
+    p2.updatePoints(movementYaxis * -1);
 
     if (p2.pos.y <= 0) {
       p2.pos.y = 0;
     }
-
-    p2.updatePivot();
   }
 
   if (40 in keysDown) { // P2 holding down
-    p2.pos.y += p2.speed * modifier;
+
+    // Update position
+    var movementYaxis = p2.speed * modifier;
+    p2.pos.y += movementYaxis;
+
+    p2.updatePivot();
+    p2.updatePoints(movementYaxis);
 
     var limit = canvas.height - p2.height;
     if (p2.pos.y >= limit) {
       p2.pos.y = limit;
     }
-
-    p2.updatePivot();
   }
 
   // Ball is out of the left boundary - player 2 wins!
@@ -202,7 +210,4 @@ var update = function (modifier) {
   // Ball movement
   ball.position.x += ball.velocity.x * modifier;
   ball.position.y += ball.velocity.y * modifier;
-
-  // p1.oldPos = p1.pos;
-  // p2.oldPos = p2.pos;
 };
