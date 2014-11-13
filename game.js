@@ -143,52 +143,6 @@ var Paddle = function () {
     //   v.normalize();
     //   return v;
     // },
-
-    // NOTE: keeping the functions below for the time being, because I'm using them
-    // in the render function, but I'll delete them at some point.
-
-    top: function () {
-      return this.pos;
-    },
-
-    topRight: function () {
-      return this.pos.clone().addSelf( new Vector2(this.width, 0) );
-    },
-
-    bottom: function () {
-      var bottom = this.pos.clone();
-      bottom.addSelf( new Vector2(0, this.height) );
-      return bottom;
-    },
-
-    bottomLeft: function () {
-      return this.bottom();
-    },
-
-    bottomRight: function () {
-      return this.pos.clone().addSelf( new Vector2(this.width, this.height) );
-      // var bottomRight = this.bottomLeft().clone();
-      // bottomRight.addSelf( new Vector2(this.width, 0) );
-      // return bottomRight;
-    },
-
-    center: function () {
-      var center = this.pos.clone();
-      center.addSelf( new Vector2(this.width / 2, this.height / 2) );
-      return center;
-    },
-
-    centerLeft: function () {
-      var centerLeft = this.pos.clone();
-      centerLeft.addSelf( new Vector2(0, this.height / 2) );
-      return centerLeft;
-    },
-
-    centerRight: function () {
-      var centerLeft = this.pos.clone();
-      centerLeft.addSelf( new Vector2(this.width, this.height / 2) );
-      return centerLeft;
-    }
   }
 }
 

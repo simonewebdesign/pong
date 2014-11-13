@@ -18,7 +18,6 @@ var render = function () {
   ctx.lineTo(p1.points[3].x, p1.points[3].y);
   ctx.stroke();
   ctx.closePath();
-
   // P1's normal
   ctx.beginPath();
   ctx.moveTo(p1.pivot.x, p1.pivot.y);
@@ -26,17 +25,10 @@ var render = function () {
   ctx.stroke();
   ctx.closePath();
 
-  // P2
-  // just commented out for the time being.
-  // ctx.fillRect(p2.pos.x, p2.pos.y, p2.width, p2.height);
 
-  // The wall normal
-  ctx.beginPath();
-  ctx.moveTo(p2.pivot.x, p2.pivot.y);
-  ctx.lineTo(p2.pivot.x - 100, p2.pivot.y);
-  ctx.stroke();
-  ctx.closePath();
-  // finisce qui! Makes sense!
+  // P2
+  // rendering method #1
+  ctx.fillRect(p2.pos.x, p2.pos.y, p2.width, p2.height);
 
   // TODO: I think I need to draw the paddles with lineTo instead of fillRect.
   // Investigate. This is obviously just for showing a curved wall and has nothing
@@ -54,21 +46,16 @@ var render = function () {
   // translating back to the origin
   ctx.translate( -1 * p2.pivot.x, -1 * p2.pivot.y );
 
-  // begin drawing p2
-  ctx.beginPath();
-  ctx.moveTo(p2.pos.x, p2.pos.y);
-  ctx.lineTo(p2.bottom().x, p2.bottom().y);
-  ctx.moveTo(p2.bottom().x, p2.bottom().y);
-  ctx.lineTo(p2.bottomRight().x, p2.bottomRight().y);
-  ctx.moveTo(p2.bottomRight().x, p2.bottomRight().y);
-  ctx.lineTo(p2.topRight().x, p2.topRight().y);
-  ctx.moveTo(p2.topRight().x, p2.topRight().y);
-  ctx.lineTo(p2.pos.x, p2.pos.y);
-  ctx.stroke();
-  ctx.closePath();
-  // end drawing p2
+  // you could draw P2 here
 
   ctx.restore();
+
+  // P2's normal
+  ctx.beginPath();
+  ctx.moveTo(p2.pivot.x, p2.pivot.y);
+  ctx.lineTo(p2.pivot.x - 100, p2.pivot.y);
+  ctx.stroke();
+  ctx.closePath(); // ends here and it makes sense
 
 
   // ball
