@@ -5,6 +5,10 @@ var update = function (modifier) {
     isGameStarted = true;
   }
 
+  if (!isGameStarted) {
+    return false;
+  }
+
   if (87 in keysDown) { // P1 holding up (key: w)
     p1.pos.y -= p1.speed * modifier;
 
@@ -13,6 +17,7 @@ var update = function (modifier) {
     }
 
     p1.updatePivot();
+    // p1.updatePoints();
   }
 
   if (83 in keysDown) { // P1 holding down (key: s)
@@ -187,12 +192,10 @@ var update = function (modifier) {
     ball.deflect( new Vector2(1, 0) );
   }
 
-  if (isGameStarted) {
-    // Ball movement
-    ball.position.x += ball.velocity.x * modifier;
-    ball.position.y += ball.velocity.y * modifier;
+  // Ball movement
+  ball.position.x += ball.velocity.x * modifier;
+  ball.position.y += ball.velocity.y * modifier;
 
-    p1.oldPos = p1.pos;
-    p2.oldPos = p2.pos;
-  }
+  // p1.oldPos = p1.pos;
+  // p2.oldPos = p2.pos;
 };
