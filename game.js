@@ -54,6 +54,12 @@ var Paddle = function () {
       this.pivot.set(this.width / 2, this.height / 2).addSelf(this.pos);
     },
 
+    updatePoints: function (movementYaxis) {
+      for (var i = 0; i < this.points.length; i++) {
+        this.points[i].y += movementYaxis;
+      }
+    },
+
     // rotateAroundPivot: function () {
     //   var pivot = this.pivot.clone().normalize();
     //   this.direction.subSelf(pivot).rotate(this.angle).addSelf(pivot);

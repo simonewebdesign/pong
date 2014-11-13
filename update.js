@@ -10,18 +10,24 @@ var update = function (modifier) {
   }
 
   if (87 in keysDown) { // P1 holding up (key: w)
-    p1.pos.y -= p1.speed * modifier;
+
+    // Update position
+    var movementYaxis = p1.speed * modifier;
+    p1.pos.y -= movementYaxis;
 
     if (p1.pos.y <= 0) {
       p1.pos.y = 0;
     }
 
     p1.updatePivot();
-    // p1.updatePoints();
+    p1.updatePoints(movementYaxis * -1);
   }
 
   if (83 in keysDown) { // P1 holding down (key: s)
-    p1.pos.y += p1.speed * modifier;
+
+    // Update position
+    var movementYaxis = p1.speed * modifier;
+    p1.pos.y += movementYaxis;
 
     var limit = canvas.height - p1.height;
     if (p1.pos.y >= limit) {
@@ -29,6 +35,7 @@ var update = function (modifier) {
     }
 
     p1.updatePivot();
+    p1.updatePoints(movementYaxis);
   }
 
   if (38 in keysDown) { // P2 holding up
