@@ -57,3 +57,4 @@ I would like to thank Matt Hackett for his tutorial on [how to make a simple HTM
 [demo]: http://www.simonewebdesign.it/games/pong
 [tutorial]: http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/
 [screenshot]: https://raw.githubusercontent.com/dudeOMG/pong/master/pong.png
+
