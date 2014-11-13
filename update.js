@@ -121,46 +121,44 @@ var update = function (modifier) {
     ///////////////////////////////////////
     // First of all, I need to calculate the wall normal properly.
     // I start by getting the A and B points:
-    // var a = p1.points[1],
-    //     b = p1.points[2];
+    var a = p1.points[1],
+        b = p1.points[2];
 
-    // console.log("points:", a, b);
+    console.log("points:", a, b);
 
-    // // Then I get the directing vector:
-    // var dirVector = b.subSelf(a);
-    // console.log("dirVector:", dirVector);
+    // Then I get the directing vector:
+    var dirVector = b.subSelf(a);
+    console.log("dirVector:", dirVector);
 
-    // // And I flip it:
-    // var dirVectorFlipped = p1.pos.clone(); //dirVector //.flipRight();
-    // console.log("dirVectorFlipped:", dirVectorFlipped);
+    // And I flip it:
+    var dirVectorFlipped = dirVector.flipRight();
+    console.log("dirVectorFlipped:", dirVectorFlipped);
 
-    // // normal is paddle's normalized directing vector.
-    // // could store this in paddle.direction.
-    // // this should be calculated using cross product.
-    // // var norm = new Vector2(0, 1);
-    // var norm = dirVectorFlipped;
-    // // console.log("norm:", norm);
+    // norm is paddle's normalized directing vector.
+    // could store this in paddle.direction.
+    // this should be calculated using cross product.
+    // var norm = new Vector2(0, 1);
+    var norm = dirVectorFlipped.normalize();
+    console.log("norm:", norm);
 
-    // var angle = 1;
-    // var pivot = p1.pivot.clone();
-    // console.log("pivot:", pivot);
+    var angle = 1;
+    var pivot = p1.pivot.clone();
+    console.log("pivot:", pivot);
 
-    // // start rotating around the pivot point.
-    // // first of all, make pivot the origin, by subtracting the norm to the pivot.
-    // norm = norm.subSelf(pivot);
-    // console.log("norm (subtracted pivot):", norm);
+    // the issue is here. Google for how to rotate around a pivot in canvas.
+    // start rotating around the pivot point.
+    // first of all, make pivot the origin, by subtracting the norm to the pivot.
+    norm = norm.subSelf(pivot);
+    console.log("norm (subtracted pivot):", norm);
 
-    // norm = norm.rotate(angle).addSelf(pivot);
-    // console.log("norm (rotated):", norm);
+    norm = norm.rotate(angle).addSelf(pivot);
+    console.log("norm (rotated):", norm);
 
-    // norm = norm.normalize();
-    // console.log("norm (normized):", norm);
+    norm = norm.normalize();
+    console.log("norm (normalized):", norm);
 
-    // ball.deflect(norm);
+    ball.deflect(norm);
     ///////////////
-
-
-
   }
 
   // Ball is colliding with P2
