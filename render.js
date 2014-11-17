@@ -92,13 +92,4 @@ var render = function () {
   if (!isGameStarted) {
     ctx.fillText("Press spacebar to start", 200, canvas.height / 2);
   }
-
-  // Ball (debug)
-  // ctx.fillText("ball: " + JSON.stringify(ball), 32, 96);
-
-  // // P1 (debug)
-  // ctx.fillText("p1: " + JSON.stringify(p1), 32, 64);
-
-  // // P2 (debug)
-  // ctx.fillText("p2: " + JSON.stringify(p2), 32, 80);
 };
