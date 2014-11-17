@@ -124,15 +124,15 @@ var update = function (modifier) {
     var a = p1.points[1],
         b = p1.points[2];
 
-    console.log("points:", a, b);
+    // console.log("points:", a, b);
 
     // Then I get the directing vector:
     var dirVector = b.subSelf(a);
-    console.log("dirVector:", dirVector);
+    // console.log("dirVector:", dirVector);
 
     // And I flip it:
     var dirVectorFlipped = dirVector.flipRight();
-    console.log("dirVectorFlipped:", dirVectorFlipped);
+    // console.log("dirVectorFlipped:", dirVectorFlipped);
 
     // norm is paddle's normalized directing vector.
     // could store this in paddle.direction.
@@ -141,18 +141,21 @@ var update = function (modifier) {
     var norm = dirVectorFlipped.normalize();
     console.log("norm:", norm);
 
-    var angle = 1;
+    var angle = 4;
     var pivot = p1.pivot.clone();
     console.log("pivot:", pivot);
 
     // the issue is here. Google for how to rotate around a pivot in canvas.
     // start rotating around the pivot point.
     // first of all, make pivot the origin, by subtracting the norm to the pivot.
-    norm = norm.subSelf(pivot);
-    console.log("norm (subtracted pivot):", norm);
+    // norm = norm.subSelf(pivot);
+    // console.log("norm (subtracted pivot):", norm);
 
-    norm = norm.rotate(angle).addSelf(pivot);
+    norm = norm.rotate(angle);
     console.log("norm (rotated):", norm);
+
+    norm = norm.addSelf(pivot);
+    console.log("norm (added pivot):", norm);
 
     norm = norm.normalize();
     console.log("norm (normalized):", norm);

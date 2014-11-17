@@ -176,11 +176,11 @@ Vector2.prototype = {
 
     },
 
-    // rotateAroundPivot: function( pivot, angle ) {
+    rotateAroundPivot: function( pivot, angle ) {
 
-    //     return this.subSelf(pivot).rotate(angle).addSelf(pivot);
+        return this.subSelf(pivot).rotate(angle).addSelf(pivot);
 
-    // },
+    },
 
     // Returns the angle that the vector points to.
     angle: function () {
