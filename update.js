@@ -141,21 +141,6 @@ var update = function (modifier) {
     var norm = dirVectorFlipped.normalize();
     console.log("norm:", norm);
 
-    // the issue is here. Google for how to rotate around a pivot in canvas.
-    // start rotating around the pivot point.
-    // first of all, make pivot the origin, by subtracting the norm to the pivot.
-    // norm = norm.subSelf(pivot);
-    // console.log("norm (subtracted pivot):", norm);
-
-    // norm = norm.rotate(angle);
-    // console.log("norm (rotated):", norm);
-
-    // norm = norm.addSelf(pivot);
-    // console.log("norm (added pivot):", norm);
-
-    // norm = norm.normalize();
-    // console.log("norm (normalized):", norm);
-
     ball.deflect(norm);
     p1.rotatePoints(45);
     ///////////////
