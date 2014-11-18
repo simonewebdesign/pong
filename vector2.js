@@ -163,12 +163,15 @@ Vector2.prototype = {
     },
 
 
-    // Rotates the vector around the origin by the specified angle.
+    // Rotates the vector around the origin by the specified angle (in degrees).
     // Equivalent to multiplying by the 2×2 rotation matrix.
     rotate: function( angle ) {
-
-        var px = this.x * Math.cos(angle) - this.y * Math.sin(angle);
-        var py = this.x * Math.sin(angle) + this.y * Math.cos(angle);
+        var x = this.x,
+            y = this.y,
+            to_radians = Math.PI / 180,
+            rad = angle * to_radians;
+        var px = x * Math.cos(rad) - y * Math.sin(rad);
+        var py = x * Math.sin(rad) + y * Math.cos(rad);
 
         this.set( px, py );
 
