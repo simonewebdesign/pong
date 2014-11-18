@@ -121,8 +121,8 @@ var update = function (modifier) {
     ///////////////////////////////////////
     // First of all, I need to calculate the wall normal properly.
     // I start by getting the A and B points:
-    var a = p1.points[1],
-        b = p1.points[2];
+    var a = p1.points[1].clone(),
+        b = p1.points[2].clone();
 
     // console.log("points:", a, b);
 
@@ -141,26 +141,23 @@ var update = function (modifier) {
     var norm = dirVectorFlipped.normalize();
     console.log("norm:", norm);
 
-    var angle = 4;
-    var pivot = p1.pivot.clone();
-    console.log("pivot:", pivot);
-
     // the issue is here. Google for how to rotate around a pivot in canvas.
     // start rotating around the pivot point.
     // first of all, make pivot the origin, by subtracting the norm to the pivot.
     // norm = norm.subSelf(pivot);
     // console.log("norm (subtracted pivot):", norm);
 
-    norm = norm.rotate(angle);
-    console.log("norm (rotated):", norm);
+    // norm = norm.rotate(angle);
+    // console.log("norm (rotated):", norm);
 
-    norm = norm.addSelf(pivot);
-    console.log("norm (added pivot):", norm);
+    // norm = norm.addSelf(pivot);
+    // console.log("norm (added pivot):", norm);
 
-    norm = norm.normalize();
-    console.log("norm (normalized):", norm);
+    // norm = norm.normalize();
+    // console.log("norm (normalized):", norm);
 
     ball.deflect(norm);
+    p1.rotatePoints(45);
     ///////////////
   }
 
@@ -211,4 +208,6 @@ var update = function (modifier) {
   // Ball movement
   ball.position.x += ball.velocity.x * modifier;
   ball.position.y += ball.velocity.y * modifier;
+
+  // p1.rotatePoints(2);
 };

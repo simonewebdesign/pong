@@ -76,9 +76,9 @@ var Paddle = function () {
     //   this.rotate()
     // }
 
-    rotatePoints: function () {
+    rotatePoints: function (angle) {
       for (var i = 0; i < this.points.length; i++) {
-        this.points[i].multiplyScalar(this.pivot);
+        this.points[i].rotateAroundPivot(this.pivot, angle);
       }
     },
     // This can't be a function, because you need to manipulate it, e.g. normalize and rotate
