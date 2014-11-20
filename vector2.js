@@ -169,9 +169,11 @@ Vector2.prototype = {
         var x = this.x,
             y = this.y,
             to_radians = Math.PI / 180,
-            rad = angle * to_radians;
-        var px = x * Math.cos(rad) - y * Math.sin(rad);
-        var py = x * Math.sin(rad) + y * Math.cos(rad);
+            rad = angle * to_radians,
+            sin = Math.sin(rad),
+            cos = Math.cos(rad),
+            px = x * cos - y * sin;
+            py = x * sin + y * cos;
 
         this.set( px, py );
 
