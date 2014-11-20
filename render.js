@@ -97,6 +97,9 @@ var render = function () {
   // P2 Score
   ctx.fillText(p2.score, canvas.width - 32 - 10, 32);
 
+  // Debugging the angle
+  ctx.fillText(p1.angle, 64, 64);
+
   // Text options
   ctx.font = "36px Helvetica";
 

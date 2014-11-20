@@ -78,8 +78,22 @@ var Paddle = function () {
     // }
 
     rotatePoints: function (angle) {
+      // var xAxis = new Vector2(1, 0),
+      //     yAxis = new Vector2(0, 1),
+      //     newxAxis = xAxis.rotate(angle),
+      //     newyAxis = yAxis.rotate(angle);
+
+      // var rotatedPivot = this.pivot.clone().rotateAroundPivot(this.pivot, angle);
+
       for (var i = 0; i < this.points.length; i++) {
         this.points[i].rotateAroundPivot(this.pivot, angle);
+        // var p = this.points[i];
+        // var xa = newxAxis.clone().multiplyScalar(p.x);
+        // var ya = newyAxis.clone().multiplyScalar(p.y);
+        // var newPoint = xa.addSelf(ya);
+
+        // // update point
+        // this.points[i] = newPoint;
       }
     },
     // This can't be a function, because you need to manipulate it, e.g. normalize and rotate
