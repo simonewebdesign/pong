@@ -44,6 +44,7 @@ var Paddle = function () {
     points: [],
     pos: new Vector2(),
     pivot: new Vector2(),
+    // the directing vector (aka wall normal)
     direction: new Vector2(),
     oldPos: new Vector2(), // For calculating the offset. Temporary... maybe.
 
@@ -119,8 +120,7 @@ var Paddle = function () {
 
     // Note: I just decided to write this second function that mixes the business logic
     // with the calculation of a directing vector.
-    // Let's see if it works first.
-    // calculateDirectingVector: function (rotationAngle) {
+    // Let's see if it works first.: function (rotationAngle) {
     //   // The pivot will be the paddle's center, for simplicity.
     //   var pivot = this.center();
 

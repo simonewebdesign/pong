@@ -9,6 +9,10 @@ var update = function (modifier) {
     return false;
   }
 
+  // resetting angles
+  // p1.angle = 0,
+  // p2.angle = 0;
+
   if (87 in keysDown) { // P1 holding up (key: w)
 
     // Update position
@@ -21,6 +25,14 @@ var update = function (modifier) {
     if (p1.pos.y <= 0) {
       p1.pos.y = 0;
     }
+
+    // I use the angle to simulate a curved paddle surface by varying the
+    // normal vector of the paddle's surface. This allows the player to
+    // change the ball's movement angle by intercepting the ball in movement
+    // to get a steeper or shallower reflection angle.
+    // If a collision is occurring, this will rotate the points correctly.
+    p1.angle += 0.2;
+    p1.rotatePoints(p1.angle);
   }
 
   if (83 in keysDown) { // P1 holding down (key: s)
@@ -36,6 +48,10 @@ var update = function (modifier) {
     if (p1.pos.y >= limit) {
       p1.pos.y = limit;
     }
+
+    // if a collision is occurring, this will rotate the points correctly
+    p1.angle -= 0.2;
+    p1.rotatePoints(p1.angle);
   }
 
   if (38 in keysDown) { // P2 holding up
@@ -50,6 +66,10 @@ var update = function (modifier) {
     if (p2.pos.y <= 0) {
       p2.pos.y = 0;
     }
+
+    // if a collision is occurring, this will rotate the points correctly
+    p2.angle++;
+    p2.rotatePoints(p2.angle);
   }
 
   if (40 in keysDown) { // P2 holding down
@@ -65,6 +85,10 @@ var update = function (modifier) {
     if (p2.pos.y >= limit) {
       p2.pos.y = limit;
     }
+
+    // if a collision is occurring, this will rotate the points correctly
+    p2.angle--;
+    p2.rotatePoints(p2.angle);
   }
 
   // Ball is out of the left boundary - player 2 wins!
@@ -124,25 +148,23 @@ var update = function (modifier) {
     var a = p1.points[1].clone(),
         b = p1.points[2].clone();
 
-    // console.log("points:", a, b);
-
     // Then I get the directing vector:
-    var dirVector = b.subSelf(a);
+    p1.direction = b.subSelf(a).normalize();
+
     // console.log("dirVector:", dirVector);
 
     // And I flip it:
-    var dirVectorFlipped = dirVector.flipRight();
+    // var dirVectorFlipped = dirVector.flipRight();
     // console.log("dirVectorFlipped:", dirVectorFlipped);
 
     // norm is paddle's normalized directing vector.
     // could store this in paddle.direction.
     // this should be calculated using cross product.
     // var norm = new Vector2(0, 1);
-    var norm = dirVectorFlipped.normalize();
-    console.log("norm:", norm);
+    // var norm = dirVectorFlipped.normalize();
 
-    ball.deflect(norm);
-    p1.rotatePoints(45);
+    p1.rotatePoints(p1.angle);
+    ball.deflect(p1.direction);
     ///////////////
   }
 

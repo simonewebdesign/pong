@@ -3,17 +3,28 @@ var render = function () {
   // clear the canvas
   ctx.clear();
 
-  ctx.fillStyle = "#0F0";
+  // ctx.fillStyle = "#0F0";
   // P1
   // this was the original code, and it was working good
   // ctx.fillRect(p1.pos.x, p1.pos.y, p1.width, p1.height);
   ctx.beginPath();
+  ctx.strokeStyle = "black";
   ctx.moveTo(p1.points[3].x, p1.points[3].y);
   ctx.lineTo(p1.points[0].x, p1.points[0].y);
   ctx.moveTo(p1.points[0].x, p1.points[0].y);
   ctx.lineTo(p1.points[1].x, p1.points[1].y);
+  ctx.stroke();
+  ctx.closePath();
+
+  ctx.beginPath();
+  ctx.strokeStyle = "red";
   ctx.moveTo(p1.points[1].x, p1.points[1].y);
   ctx.lineTo(p1.points[2].x, p1.points[2].y);
+  ctx.stroke();
+  ctx.closePath();
+
+  ctx.beginPath();
+  ctx.strokeStyle = "black";
   ctx.moveTo(p1.points[2].x, p1.points[2].y);
   ctx.lineTo(p1.points[3].x, p1.points[3].y);
   ctx.stroke();
@@ -24,7 +35,6 @@ var render = function () {
   ctx.lineTo(p1.pivot.x + 100, p1.pivot.y);
   ctx.stroke();
   ctx.closePath();
-
 
   // P2
   // rendering method #1
@@ -51,10 +61,12 @@ var render = function () {
   ctx.moveTo(p2.points[3].x, p2.points[3].y);
   ctx.lineTo(p2.points[0].x, p2.points[0].y);
   ctx.moveTo(p2.points[0].x, p2.points[0].y);
+    ctx.fillStyle = "red";
   ctx.lineTo(p2.points[1].x, p2.points[1].y);
   ctx.moveTo(p2.points[1].x, p2.points[1].y);
   ctx.lineTo(p2.points[2].x, p2.points[2].y);
   ctx.moveTo(p2.points[2].x, p2.points[2].y);
+  
   ctx.lineTo(p2.points[3].x, p2.points[3].y);
   ctx.stroke();
   ctx.closePath();
