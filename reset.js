@@ -6,7 +6,7 @@ var reset = function () {
   var xPosition = (canvas.width - ball.size) / 2,
       yPosition = (canvas.height - ball.size) / 2,
       xVelocity = Math.random() > 0.5 ? ball.speed : -ball.speed, // randomly start from left or right
-      yVelocity = 0;
+      yVelocity = Math.random() > 0.5 ? ball.speed : -ball.speed; // randomly start from top or bottom
 
   ball.position = new Vector2(xPosition, yPosition);
   ball.velocity = new Vector2(xVelocity, yVelocity);
