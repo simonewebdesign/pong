@@ -100,6 +100,14 @@ var render = function () {
   // Debugging the angle
   ctx.fillText(p1.angle, 64, 64);
 
+  // Debugging the pivot
+  ctx.fillText(p1.pivot.x, 64, 86);
+  ctx.fillText(p1.pivot.y, 86, 86);
+
+  // Debugging the position
+  ctx.fillText(p1.pos.x, 100, 100);
+  ctx.fillText(p1.pos.y, 100, 115);
+
   // Text options
   ctx.font = "36px Helvetica";
 

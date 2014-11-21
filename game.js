@@ -49,7 +49,7 @@ var Paddle = function () {
     oldPos: new Vector2(), // For calculating the offset. Temporary... maybe.
 
     // This is here as convenience for using it in the render function
-    angle: 0,
+    angle: -1,
 
     updatePivot: function () {
       this.pivot.set(this.width / 2, this.height / 2).addSelf(this.pos);
@@ -96,6 +96,10 @@ var Paddle = function () {
         // this.points[i] = newPoint;
       }
     },
+
+    // resetPoints: function () {
+    //   this.points[0]
+    // }
     // This can't be a function, because you need to manipulate it, e.g. normalize and rotate
     // pivot: function () {
     //   return new Vector2(this.width / 2, this.height / 2).addSelf(this.pos);
@@ -162,3 +166,47 @@ var Paddle = function () {
 
 var p1 = new Paddle(),
     p2 = new Paddle();
+
+// Positions of paddles
+var xPositionP1 = 20,
+    yPositionP1 = canvas.height / 2 - p1.height / 2,
+    xPositionP2 = canvas.width - p2.width - 20,
+    yPositionP2 = canvas.height / 2 - p2.height / 2;
+
+// Reset points to their initial position.
+// Points are set in this order: topLeft, topRight, bottomRight, bottomLeft
+p1.resetPoints = function () {
+  this.points = [
+    new Vector2(xPositionP1, yPositionP1),
+    new Vector2(xPositionP1 + p1.width, yPositionP1),
+    new Vector2(xPositionP1 + p1.width, yPositionP1 + p1.height),
+    new Vector2(xPositionP1, yPositionP1 + p1.height)
+  ];
+};
+
+p2.resetPoints = function () {
+  this.points = [
+    new Vector2(xPositionP2, yPositionP2),
+    new Vector2(xPositionP2 + p2.width, yPositionP2),
+    new Vector2(xPositionP2 + p2.width, yPositionP2 + p2.height),
+    new Vector2(xPositionP2, yPositionP2 + p2.height)
+  ];
+};
+
+// Realign points to the axis, as if I rotate with an angle of 0.
+// This is obviously cheaper than an actual rotation.
+// Also note that this takes in count the current position (resetPoints doesn't)
+p1.realignPoints = function () {
+  // console.log(this.pos);
+  var topRight = new Vector2(this.width, 0),
+      bottomRight = new Vector2(this.width, this.height),
+      bottomLeft = new Vector2(0, this.height);
+
+  this.points = [
+    this.pos.clone(),
+    this.pos.clone().addSelf(topRight),
+    this.pos.clone().addSelf(bottomRight),
+    this.pos.clone().addSelf(bottomLeft)
+  ];
+  // console.log(this.points);
+};

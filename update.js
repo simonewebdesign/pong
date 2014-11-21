@@ -9,10 +9,6 @@ var update = function (modifier) {
     return false;
   }
 
-  // resetting angles
-  // p1.angle = 0,
-  // p2.angle = 0;
-
   if (87 in keysDown) { // P1 holding up (key: w)
 
     // Update position
@@ -21,6 +17,7 @@ var update = function (modifier) {
 
     p1.updatePivot();
     p1.updatePoints(movementYaxis * -1);
+    // p1.rotatePoints(p1.angle);
 
     if (p1.pos.y <= 0) {
       p1.pos.y = 0;
@@ -31,8 +28,6 @@ var update = function (modifier) {
     // change the ball's movement angle by intercepting the ball in movement
     // to get a steeper or shallower reflection angle.
     // If a collision is occurring, this will rotate the points correctly.
-    p1.angle += 0.2;
-    p1.rotatePoints(p1.angle);
   }
 
   if (83 in keysDown) { // P1 holding down (key: s)
@@ -43,15 +38,12 @@ var update = function (modifier) {
 
     p1.updatePivot();
     p1.updatePoints(movementYaxis);
+    // p1.rotatePoints(p1.angle); 
 
     var limit = canvas.height - p1.height;
     if (p1.pos.y >= limit) {
       p1.pos.y = limit;
     }
-
-    // if a collision is occurring, this will rotate the points correctly
-    p1.angle -= 0.2;
-    p1.rotatePoints(p1.angle);
   }
 
   if (38 in keysDown) { // P2 holding up
@@ -85,10 +77,6 @@ var update = function (modifier) {
     if (p2.pos.y >= limit) {
       p2.pos.y = limit;
     }
-
-    // if a collision is occurring, this will rotate the points correctly
-    p2.angle--;
-    p2.rotatePoints(p2.angle);
   }
 
   // Ball is out of the left boundary - player 2 wins!
@@ -163,7 +151,7 @@ var update = function (modifier) {
     // var norm = new Vector2(0, 1);
     // var norm = dirVectorFlipped.normalize();
 
-    p1.rotatePoints(p1.angle);
+    // p1.rotatePoints(p1.angle);
     ball.deflect(p1.direction);
     ///////////////
   }
