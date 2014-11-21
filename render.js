@@ -5,6 +5,10 @@ var render = function () {
 
   // ctx.fillStyle = "#0F0";
   // P1
+  if (p1BgImage.loaded) {
+    ctx.drawImage(p1BgImage, p1.pos.x, p1.pos.y);
+  }
+
   // this was the original code, and it was working good
   // ctx.fillRect(p1.pos.x, p1.pos.y, p1.width, p1.height);
   ctx.beginPath();
@@ -37,6 +41,9 @@ var render = function () {
   ctx.closePath();
 
   // P2
+  if (p2BgImage.loaded) {
+    ctx.drawImage(p2BgImage, p2.pos.x, p2.pos.y);
+  }
   // rendering method #1
   // ctx.fillRect(p2.pos.x, p2.pos.y, p2.width, p2.height);
 
@@ -82,8 +89,13 @@ var render = function () {
 
 
   // ball
+  if (ballBgImage.loaded) {
+    ctx.drawImage(ballBgImage, ball.position.x, ball.position.y);
+  }
+
   ctx.fillStyle = "#DDD";
   ctx.fillRect(ball.position.x, ball.position.y, ball.size, ball.size);
+
 
   // Text options
   ctx.fillStyle = "rgb(250, 250, 250)";
