@@ -10,14 +10,12 @@ var update = function (modifier) {
   }
 
   if (87 in keysDown) { // P1 holding up (key: w)
-
     // Update position
     var movementYaxis = p1.speed * modifier;
     p1.pos.y -= movementYaxis;
 
     p1.updatePivot();
     p1.updatePoints(movementYaxis * -1);
-    // p1.rotatePoints(p1.angle);
 
     if (p1.pos.y <= 0) {
       p1.pos.y = 0;
@@ -25,14 +23,12 @@ var update = function (modifier) {
   }
 
   if (83 in keysDown) { // P1 holding down (key: s)
-
     // Update position
     var movementYaxis = p1.speed * modifier;
     p1.pos.y += movementYaxis;
 
     p1.updatePivot();
     p1.updatePoints(movementYaxis);
-    // p1.rotatePoints(p1.angle); 
 
     var limit = canvas.height - p1.height;
     if (p1.pos.y >= limit) {
@@ -41,7 +37,6 @@ var update = function (modifier) {
   }
 
   if (38 in keysDown) { // P2 holding up
-
     // Update position
     var movementYaxis = p2.speed * modifier;
     p2.pos.y -= movementYaxis;
@@ -52,14 +47,9 @@ var update = function (modifier) {
     if (p2.pos.y <= 0) {
       p2.pos.y = 0;
     }
-
-    // if a collision is occurring, this will rotate the points correctly
-    p2.angle++;
-    p2.rotatePoints(p2.angle);
   }
 
   if (40 in keysDown) { // P2 holding down
-
     // Update position
     var movementYaxis = p2.speed * modifier;
     p2.pos.y += movementYaxis;

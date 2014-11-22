@@ -97,9 +97,24 @@ var Paddle = function () {
       }
     },
 
-    // resetPoints: function () {
-    //   this.points[0]
-    // }
+    // Realign points to the axis, as if I rotate with an angle of 0.
+    // This is obviously cheaper than an actual rotation.
+    // Also note that this takes in count the current position (resetPoints doesn't)
+    realignPoints: function () {
+      // console.log(this.pos);
+      var topRight = new Vector2(this.width, 0),
+          bottomRight = new Vector2(this.width, this.height),
+          bottomLeft = new Vector2(0, this.height);
+
+      this.points = [
+        this.pos.clone(),
+        this.pos.clone().addSelf(topRight),
+        this.pos.clone().addSelf(bottomRight),
+        this.pos.clone().addSelf(bottomLeft)
+      ];
+      // console.log(this.points);
+    },
+
     // This can't be a function, because you need to manipulate it, e.g. normalize and rotate
     // pivot: function () {
     //   return new Vector2(this.width / 2, this.height / 2).addSelf(this.pos);
@@ -191,22 +206,4 @@ p2.resetPoints = function () {
     new Vector2(xPositionP2 + p2.width, yPositionP2 + p2.height),
     new Vector2(xPositionP2, yPositionP2 + p2.height)
   ];
-};
-
-// Realign points to the axis, as if I rotate with an angle of 0.
-// This is obviously cheaper than an actual rotation.
-// Also note that this takes in count the current position (resetPoints doesn't)
-p1.realignPoints = function () {
-  // console.log(this.pos);
-  var topRight = new Vector2(this.width, 0),
-      bottomRight = new Vector2(this.width, this.height),
-      bottomLeft = new Vector2(0, this.height);
-
-  this.points = [
-    this.pos.clone(),
-    this.pos.clone().addSelf(topRight),
-    this.pos.clone().addSelf(bottomRight),
-    this.pos.clone().addSelf(bottomLeft)
-  ];
-  // console.log(this.points);
 };
