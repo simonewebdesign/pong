@@ -22,12 +22,6 @@ var update = function (modifier) {
     if (p1.pos.y <= 0) {
       p1.pos.y = 0;
     }
-
-    // I use the angle to simulate a curved paddle surface by varying the
-    // normal vector of the paddle's surface. This allows the player to
-    // change the ball's movement angle by intercepting the ball in movement
-    // to get a steeper or shallower reflection angle.
-    // If a collision is occurring, this will rotate the points correctly.
   }
 
   if (83 in keysDown) { // P1 holding down (key: s)
