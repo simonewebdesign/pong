@@ -1,10 +1,10 @@
-// // Background image
-// var bgReady = false;
-// var bgImage = new Image();
-// bgImage.onload = function () {
-//   bgReady = true;
-// };
-// bgImage.src = "assets/background.png";
+var canvasBgImage = new Image(),
+    bgPattern;
+canvasBgImage.onload = function () {
+  this.loaded = true;
+  bgPattern = ctx.createPattern(canvasBgImage, 'repeat');
+};
+canvasBgImage.src = "assets/sand.png";
 
 var p1BgImage = new Image();
 p1BgImage.loaded = false; // custom flag

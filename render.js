@@ -3,6 +3,10 @@ var render = function () {
   // clear the canvas
   ctx.clear();
 
+  // Draw the background image
+  ctx.fillStyle = bgPattern;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
   // ctx.fillStyle = "#0F0";
   // P1
   if (p1BgImage.loaded) {
