@@ -1,7 +1,5 @@
 // Draw everything
 var render = function () {
-  // clear the canvas
-  ctx.clear();
 
   // Draw the background image
   ctx.fillStyle = bgPattern;
