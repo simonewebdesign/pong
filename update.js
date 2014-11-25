@@ -84,7 +84,6 @@ var update = function (modifier) {
   ) {
     // limits
     var limit = p1.pos.x + p1.width;
-
     if (ball.position.x <= limit) {
       ball.position.x = limit + 1;
     }
@@ -97,6 +96,7 @@ var update = function (modifier) {
     // Then I get the directing vector:
     p1.direction = b.subSelf(a).normalize();
 
+    console.log(p1.direction);
     ball.deflect(p1.direction);
   }
 
@@ -107,8 +107,22 @@ var update = function (modifier) {
     && ball.position.y <= (p2.pos.y + p2.height)
     && p2.pos.y <= (ball.position.y + ball.size)
   ) {
+    // limits
+    var limit = p2.pos.x;
+    if (ball.position.x >= limit) {
+      ball.position.x = limit - 1;
+    }
 
-    ball.deflect( new Vector2(0,1) );
+    // First of all, I need to calculate the wall normal properly.
+    // I start by getting the A and B points:
+    var a = p2.points[0].clone(),
+        b = p2.points[3].clone();
+
+    // Then I get the directing vector:
+    p2.direction = b.subSelf(a).normalize();
+
+    console.log(p2.direction);
+    ball.deflect(p2.direction);
   }
 
   // Ball is colliding with the top
