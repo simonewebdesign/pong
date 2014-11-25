@@ -8,7 +8,6 @@ var ball = {
   * N: a normalized vector of the plane surface (e.g. paddle or wall)
   * TODO: For more realism, you can multiply velT and velN by constants
   * representing friction and restitution, respectively.
-  * MAYBE JUST CONSIDER THIS FIRST.
   */
   deflect: function (N) {
     var dot = this.velocity.dot(N);
@@ -23,11 +22,15 @@ var Paddle = function () {
     speed: 600,
     width: 24,
     height: 96,
+
+    // the coordinates
     points: [],
+
     pos: new Vector2(),
     pivot: new Vector2(),
     // the directing vector (aka wall normal)
     direction: new Vector2(),
+    bgImage: new Image(),
 
     // This is here as convenience for using it in the render function
     angle: -1,
@@ -80,6 +83,36 @@ var Paddle = function () {
       // console.log(this.points);
     },
 
+    render: function () {
+      if (this.angle == 0) { // paddle doesn't need to be rotated
+
+        if (this.bgImage.loaded) {
+          ctx.drawImage(this.bgImage, this.pos.x, this.pos.y);
+        }
+
+      } else { // rotation
+
+        // saving current context
+        ctx.save();
+
+        // translating to the pivot point
+        ctx.translate( this.pivot.x, this.pivot.y );
+
+        // rotating
+        ctx.rotate( (Math.PI / 180) * this.angle );
+
+        // translating back to the origin
+        ctx.translate( -1 * this.pivot.x, -1 * this.pivot.y );
+
+        // rendering
+        ctx.drawImage(this.bgImage, this.pos.x, this.pos.y);
+
+        // restoring the original context
+        ctx.restore();
+      }
+    },
+
+
     // This can't be a function, because you need to manipulate it, e.g. normalize and rotate
     // pivot: function () {
     //   return new Vector2(this.width / 2, this.height / 2).addSelf(this.pos);
@@ -115,3 +148,15 @@ p2.resetPoints = function () {
     new Vector2(xPositionP2, yPositionP2 + p2.height)
   ];
 };
+
+p1.bgImage.loaded = false; // custom flag
+p1.bgImage.onload = function () {
+  this.loaded = true;
+}
+p1.bgImage.src = "assets/paddleBlue.png";
+
+p2.bgImage.loaded = false; // custom flag
+p2.bgImage.onload = function () {
+  this.loaded = true;
+}
+p2.bgImage.src = "assets/paddleRed.png";
