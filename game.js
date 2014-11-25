@@ -1,6 +1,6 @@
 // Game objects
 var ball = {
-  size: 10,
+  size: 48,
   speed: 300,
   /*
   * R = 2*(V dot N)*N - V
@@ -21,8 +21,8 @@ var Paddle = function () {
   return {
     score: 0,
     speed: 600,
-    width: 10,
-    height: 100,
+    width: 24,
+    height: 96,
     points: [],
     pos: new Vector2(),
     pivot: new Vector2(),
