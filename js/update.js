@@ -3,6 +3,10 @@ var update = function (modifier) {
 
   if (32 in keysDown) { // Start the game with the spacebar
     isGameStarted = true;
+
+    if (music && !music.isPlaying) {
+      music.play();
+    }
   }
 
   if (!isGameStarted) {
@@ -66,12 +70,16 @@ var update = function (modifier) {
   // Ball is out of the left boundary - player 2 wins!
   if (ball.position.x <= 0) {
     p2.score++;
+    music.pause();
+    gameEndSound();
     reset();
   }
 
   // Ball is out of the right boundary - player 1 wins!
   if (ball.position.x >= canvas.width - ball.size) {
     p1.score++;
+    music.pause();
+    gameEndSound();
     reset();
   }
 
@@ -98,6 +106,8 @@ var update = function (modifier) {
 
     console.log(p1.direction);
     ball.deflect(p1.direction);
+
+    paddleHitSoundLow();
   }
 
   // Ball is colliding with P2
@@ -123,6 +133,8 @@ var update = function (modifier) {
 
     console.log(p2.direction);
     ball.deflect(p2.direction);
+
+    paddleHitSoundHigh();
   }
 
   // Ball is colliding with the top
