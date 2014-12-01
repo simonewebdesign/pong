@@ -137,7 +137,6 @@ var update = function (modifier) {
 
     // go back on track, just in case it went too out of boundaries
     ball.position.x = p2.pos.x - ball.size -1;
-    console.log("ball pos:", ball.position.x, "p2 pos:", p2.pos.x)
 
     paddleHitSoundHigh();
   }
