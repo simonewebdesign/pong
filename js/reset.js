@@ -8,7 +8,7 @@ var reset = function () {
       xVelocity = Math.random() > 0.5 ? ball.speed : -ball.speed, // randomly start from left or right
       yVelocity = Math.random() > 0.5 ? ball.speed : -ball.speed; // randomly start from top or bottom
 
-  ball.position = new Vector2(xPosition, yPosition);
+  ball.pos = new Vector2(xPosition, yPosition);
   ball.velocity = new Vector2(xVelocity, yVelocity);
 
   p1.pos.set(xPositionP1, yPositionP1);
