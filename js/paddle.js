@@ -27,23 +27,10 @@ var Paddle = function () {
       }
     },
 
+    // FIXME: not ideal; would be better to rotate only the pivot
     rotatePoints: function (angle) {
-      // var xAxis = new Vector2(1, 0),
-      //     yAxis = new Vector2(0, 1),
-      //     newxAxis = xAxis.rotate(angle),
-      //     newyAxis = yAxis.rotate(angle);
-
-      // var rotatedPivot = this.pivot.clone().rotateAroundPivot(this.pivot, angle);
-
       for (var i = 0; i < this.points.length; i++) {
         this.points[i].rotateAroundPivot(this.pivot, angle);
-        // var p = this.points[i];
-        // var xa = newxAxis.clone().multiplyScalar(p.x);
-        // var ya = newyAxis.clone().multiplyScalar(p.y);
-        // var newPoint = xa.addSelf(ya);
-
-        // // update point
-        // this.points[i] = newPoint;
       }
     },
 
@@ -51,7 +38,6 @@ var Paddle = function () {
     // This is obviously cheaper than an actual rotation.
     // Also note that this takes in count the current position (resetPoints doesn't)
     realignPoints: function () {
-      // console.log(this.pos);
       var topRight = new Vector2(this.width, 0),
           bottomRight = new Vector2(this.width, this.height),
           bottomLeft = new Vector2(0, this.height);
@@ -62,7 +48,6 @@ var Paddle = function () {
         this.pos.clone().addSelf(bottomRight),
         this.pos.clone().addSelf(bottomLeft)
       ];
-      // console.log(this.points);
     },
 
     render: function () {
@@ -92,11 +77,6 @@ var Paddle = function () {
         // restoring the original context
         ctx.restore();
       }
-    },
-
-    // This can't be a function, because you need to manipulate it, e.g. normalize and rotate
-    // pivot: function () {
-    //   return new Vector2(this.width / 2, this.height / 2).addSelf(this.pos);
-    // },
+    }
   }
 }
