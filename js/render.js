@@ -7,7 +7,7 @@ var render = function () {
 
   // ball
   if (ballBgImage.loaded) {
-    ctx.drawImage(ballBgImage, ball.pos.x, ball.pos.y);
+    ctx.drawImage(ballBgImage, ball.x, ball.y);
   }
 
   p1.render();

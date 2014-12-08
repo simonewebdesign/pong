@@ -1,6 +1,7 @@
 // Game objects
 var p1 = new Paddle(),
-    p2 = new Paddle();
+    p2 = new Paddle(),
+    ball = new Ball();
 
 // Positions of paddles
 var xPositionP1 = 20,
