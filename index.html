@@ -17,7 +17,47 @@
         box-shadow: 0 0 36px rgba(0, 0, 0, 0.25);
       }
     </style>
-    <script src="js/vector2.js"></script>
+    <h1 id="message">hi, traceur is not working in this browser... maybe</h1>
+    <script src="bower_components/traceur/traceur.js"></script>
+    <script>
+      // traceur bootstrap
+      new traceur.WebPageTranscoder(document.location.href).run();
+      // configuration
+      traceur.options.experimental = true;
+    </script>
+
+    <script type="module">
+      class Greeter {
+        constructor(message) {
+          this.message = message;
+        }
+
+        greet() {
+          var element = document.querySelector('#message');
+          element.innerHTML = this.message;
+        }
+      };
+
+      var greeter = new Greeter('If you see this, traceur works!');
+      greeter.greet();
+    </script>
+
+    <script type="module">
+      class Foo {
+      };
+      var a = new Foo();
+      console.log(a);
+      console.log("Traceur is still working!");
+    </script>
+    <!--<script type="module" src="js/vector2.js"></script>-->
+    <script>
+      // dynamic loading API
+      System.import('js/vector2.js').then(function(module) {
+        var aVector = new module.Vector2(123,456);
+        console.log(aVector);
+      });
+    </script>
+    <!--
     <script src="js/canvas.js"></script>
     <script src="js/assets.js"></script>
     <script src="js/ball.js"></script>
@@ -28,5 +68,6 @@
     <script src="js/update.js"></script>
     <script src="js/render.js"></script>
     <script src="js/main.js"></script>
+    -->
   </body>
 </html>

@@ -1,94 +1,82 @@
+export class Vector2 {
 
+    constructor( x, y ) {
 
-/**
- * @author mr.doob / http://mrdoob.com/
- * @author philogb / http://blog.thejit.org/
- * @author egraether / http://egraether.com/
- * @author zz85 / http://www.lab4games.net/zz85/blog
- */
+        this.x = x || 0;
+        this.y = y || 0;
+    };
 
-Vector2 = function ( x, y ) {
-
-    this.x = x || 0;
-    this.y = y || 0;
-
-};
-
-Vector2.prototype = {
-
-    constructor: Vector2,
-
-    set: function ( x, y ) {
+    set( x, y ) {
 
         this.x = x;
         this.y = y;
 
         return this;
 
-    },
+    };
 
-    copy: function ( v ) {
+    copy( v ) {
 
         this.x = v.x;
         this.y = v.y;
 
         return this;
 
-    },
+    };
 
-    clone: function () {
+    clone() {
 
         return new Vector2( this.x, this.y );
 
-    },
+    };
 
 
-    add: function ( v1, v2 ) {
+    add( v1, v2 ) {
 
         this.x = v1.x + v2.x;
         this.y = v1.y + v2.y;
 
         return this;
 
-    },
+    };
 
-    addSelf: function ( v ) {
+    addSelf( v ) {
 
         this.x += v.x;
         this.y += v.y;
 
         return this;
 
-    },
+    };
 
-    sub: function ( v1, v2 ) {
+    sub( v1, v2 ) {
 
         this.x = v1.x - v2.x;
         this.y = v1.y - v2.y;
 
         return this;
 
-    },
+    };
 
-    subSelf: function ( v ) {
+    subSelf( v ) {
 
         this.x -= v.x;
         this.y -= v.y;
 
         return this;
 
-    },
+    };
 
-    multiplyScalar: function ( s ) {
+    multiplyScalar( s ) {
 
         this.x *= s;
         this.y *= s;
 
         return this;
 
-    },
+    };
 
-    divideScalar: function ( s ) {
+    divideScalar( s ) {
 
         if ( s ) {
 
@@ -103,69 +91,69 @@ Vector2.prototype = {
 
         return this;
 
-    },
+    };
 
 
-    negate: function() {
+    negate() {
 
         return this.multiplyScalar( -1 );
 
-    },
+    };
 
-    dot: function ( v ) {
+    dot( v ) {
 
         return this.x * v.x + this.y * v.y;
 
-    },
+    };
 
-    lengthSq: function () {
+    lengthSq() {
 
         return this.x * this.x + this.y * this.y;
 
-    },
+    };
 
-    length: function () {
+    length() {
 
         return Math.sqrt( this.lengthSq() );
 
-    },
+    };
 
-    normalize: function () {
+    normalize() {
 
         return this.divideScalar( this.length() );
 
-    },
+    };
 
-    distanceTo: function ( v ) {
+    distanceTo( v ) {
 
         return Math.sqrt( this.distanceToSquared( v ) );
 
-    },
+    };
 
-    distanceToSquared: function ( v ) {
+    distanceToSquared( v ) {
 
         var dx = this.x - v.x, dy = this.y - v.y;
         return dx * dx + dy * dy;
 
-    },
+    };
 
 
-    setLength: function ( l ) {
+    setLength( l ) {
 
         return this.normalize().multiplyScalar( l );
 
-    },
+    };
 
-    equals: function( v ) {
+    equals( v ) {
 
         return ( ( v.x === this.x ) && ( v.y === this.y ) );
 
-    },
+    };
 
 
     // Rotates the vector around the origin by the specified angle (in degrees).
     // Equivalent to multiplying by the 2×2 rotation matrix.
-    rotate: function( angle ) {
+    rotate( angle ) {
         var x = this.x,
             y = this.y,
             to_radians = Math.PI / 180,
@@ -179,31 +167,30 @@ Vector2.prototype = {
 
         return this;
 
-    },
+    };
 
-    rotateAroundPivot: function( pivot, angle ) {
+    rotateAroundPivot( pivot, angle ) {
 
         return this.subSelf(pivot).rotate(angle).addSelf(pivot);
 
-    },
+    };
 
     // Returns the angle that the vector points to.
-    angle: function () {
+    angle() {
 
         return Math.atan2( this.x, this.y );
 
-    },
+    };
 
-    flipLeft: function () {
+    flipLeft() {
 
         return this.set(this.x * -1, this.y);
 
-    },
+    };
 
-    flipRight: function () {
+    flipRight() {
 
         return this.set(this.x, this.y * -1);
 
-    },
-
+    };
 };

@@ -1,0 +1,34 @@
+{
+  "name": "Pong",
+  "version": "2.1.1",
+  "homepage": "https://github.com/dudeOMG/pong",
+  "authors": [
+    "Simone Vittori <hello@simonewebdesign.it>"
+  ],
+  "description": "A pong clone written in JavaScript",
+  "main": "index.html",
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "js",
+    "es6",
+    "pong",
+    "game"
+  ],
+  "license": "WTFPL",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "traceur": "~0.0.79"
+  },
+  "resolutions": {
+    "traceur": "0.0.74"
+  }
+}
