@@ -49,14 +49,29 @@
       console.log(a);
       console.log("Traceur is still working!");
     </script>
-    <!--<script type="module" src="js/vector2.js"></script>-->
-    <script>
-      // dynamic loading API
-      System.import('js/vector2.js').then(function(module) {
-        var aVector = new module.Vector2(123,456);
-        console.log(aVector);
-      });
+    <!-- doesn't work <script type="module" src="js/vector2.js"></script>-->
+<!-- this works 
+    <script type="module">
+      import { hello } from 'js/test1';
+      console.log(hello);
     </script>
+    -->
+<!-- this works
+    <script type="module">
+      // dynamic loading API
+      // System.import('js/vector2.js').then(function(module) {
+      //   var aVector = new module.Vector2(123,456);
+      //   console.log(aVector);
+      // });
+    </script>
+    -->
+
+    <script type="module">
+      import Vector2 from 'js/vector2';
+      var aVector = new Vector2(123,456);
+      console.log(aVector);
+    </script>
+
     <!--
     <script src="js/canvas.js"></script>
     <script src="js/assets.js"></script>
