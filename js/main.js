@@ -17,7 +17,6 @@ var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
 // Let's play this game!
-var isGameStarted = false;
 var then = Date.now();
 reset();
 main();
