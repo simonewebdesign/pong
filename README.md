@@ -30,9 +30,9 @@ Start the game with spacebar.
 
 ### Implementation details
 
-The first implementation (v1.0) is the simpler one, but you don't have much control over the ball.
+The first implementation (v1.0) is simpler, but you don't have much control over the ball.
 
-In the latter implementation I simulate a curved paddle by varying the normal vector of the paddle's surface. This allows the players to change the ball's movement angle by intercepting the ball in movement to get a steeper or shallower reflection angle.
+In the latter implementation I simulated a curved paddle by varying the normal vector of the paddle's surface. This allows the players to change the ball's movement angle by intercepting the ball in movement to get a steeper or shallower reflection angle.
 
 The ball's collision is obviously perfectly elastic, which means all of the kinetic energy in a collision will get transferred, and the game speed will always be the same.
 
