@@ -4,7 +4,7 @@
 
 This is a basic canvas implementation of Atari's popular game, first released in 1972.
 
-There are two releases: the first one (v1.0) is very lightweight (around 200 lines of code), no sound, no AI and no proper ball reflection with vectors.
+There are two releases: the first one ([v1.0](https://github.com/simonewebdesign/pong/tree/a3eb56339880616e2983157fc2d5931bb9b32694)) is very lightweight (around 200 lines of code), no sound, no AI and no proper ball reflection with vectors.
 
 The second release (that is in master branch) has a lot more stuff, check it out. 
 
